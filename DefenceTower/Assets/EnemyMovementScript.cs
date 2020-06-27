@@ -5,19 +5,23 @@ using UnityEngine;
 
 public class EnemyMovementScript : MonoBehaviour
 {
-    [SerializeField] List<Block> Path;
+    [SerializeField] List<Waypoint> Path;
     // Start is called before the first frame update
     void Start()
     {
-        PrintAllWaypoints();
+        StartCoroutine(FollowPath());
 
     }
 
-    private void PrintAllWaypoints()
+    IEnumerator FollowPath()
     {
-        foreach (Block ways in Path)
+        print("Starting petrol");
+
+        foreach (Waypoint ways in Path)
         {
-            print(ways.name + " ");
+            transform.position = ways.transform.position;
+            print("Visiting block " + ways.gameObject.name);    
+            yield return new WaitForSeconds(1f);
         }
     }
 
