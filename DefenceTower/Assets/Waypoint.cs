@@ -23,11 +23,17 @@ public class Waypoint : MonoBehaviour
         return GRIDSIZE;
     }
 
-    public Vector2 GetGridPos()
+    public Vector2Int GetGridPos()
     {
         return new Vector2Int(
                  Mathf.RoundToInt(transform.position.x / GRIDSIZE) * GRIDSIZE,
                  Mathf.RoundToInt(transform.position.z / GRIDSIZE) * GRIDSIZE
             );
+    }
+
+    public void SetTopColor(Color color)
+    {
+        MeshRenderer topMeshRender = transform.Find("Top").GetComponent<MeshRenderer>();
+        topMeshRender.material.color = color;
     }
 }
