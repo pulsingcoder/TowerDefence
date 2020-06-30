@@ -6,6 +6,7 @@ public class Waypoint : MonoBehaviour
 {
     Vector2Int gridPos;
     const int GRIDSIZE = 10;
+    public bool isExplored = false;
     // Start is called before the first frame update
     void Start()
     {
