@@ -5,15 +5,17 @@ using UnityEngine;
 
 public class EnemyMovementScript : MonoBehaviour
 {
-    [SerializeField] List<Waypoint> Path;
+   
     // Start is called before the first frame update
     void Start()
     {
-       // StartCoroutine(FollowPath());
+        PathFinder pathFinder = FindObjectOfType<PathFinder>();
+        List<Waypoint> path = pathFinder.GetPath();
+        StartCoroutine(FollowPath(path));
 
     }
 
-    IEnumerator FollowPath()
+    IEnumerator FollowPath(List<Waypoint> Path)
     {
         print("Starting petrol");
 
